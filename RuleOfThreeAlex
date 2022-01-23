@@ -1,0 +1,34 @@
+file = open("ccc11_file", "r")
+lines = file.read()
+
+lines_list = lines.splitlines()
+
+for index, value in enumerate(lines_list):
+    lines_list.remove(value)
+    lines_list.insert(index, value.split())
+
+total_lines_list = lines_list[0]
+total_lines = total_lines_list[0]
+lines_list.pop(0)
+
+no_rotation = True
+
+for index, value in enumerate(lines_list):
+    for list_index, list_value in enumerate(value):
+        k = 1
+        correrct = 0
+        while k < int(total_lines):
+            if int(list_value) < int((index + k)[list_index]):
+                correct += 1
+                k += 1
+
+            else:
+                no_rotation = False
+                break
+
+        if correct == total_lines - 1:
+            no_rotation = True
+
+print(lines_list)
+print(total_lines)
+print(no_rotation)
